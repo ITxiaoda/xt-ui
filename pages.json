@@ -1,23 +1,17 @@
 {
 	"pages": [ //pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
 		{
-			"path": "pages/xt-swiper-cell/xt-swiper-cell",
+			"path": "pages/xt-verify-code/xt-verify-code",
 			"style": {
-				"navigationBarTitleText": "xt-swiper-cell",
+				"navigationBarTitleText": "验证码案例",
 				"enablePullDownRefresh": false
 			}
 
-		},
-		{
-			"path": "pages/index/index",
-			"style": {
-				"navigationBarTitleText": "home"
-			}
 		}
 	],
 	"globalStyle": {
 		"navigationBarTextStyle": "black",
-		"navigationBarTitleText": "xtUI",
+		"navigationBarTitleText": "uni-app",
 		"navigationBarBackgroundColor": "#F8F8F8",
 		"backgroundColor": "#F8F8F8"
 	}
