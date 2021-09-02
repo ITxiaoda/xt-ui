@@ -1,1 +1,1 @@
-<view style="padding:10px;"><xt-verify-code vue-id="304c9200-1" type="line" value="{{verifyCode}}" data-event-opts="{{[['^confirm',[['confirm']]],['^input',[['__set_model',['','verifyCode','$event',[]]]]]]}}" bind:confirm="__e" bind:input="__e" bind:__l="__l"></xt-verify-code></view>
+<view style="padding:10px;"><xt-verify-code vue-id="304c9200-1" type="middle" value="{{verifyCode}}" data-event-opts="{{[['^confirm',[['confirm']]],['^input',[['__set_model',['','verifyCode','$event',[]]]]]]}}" bind:confirm="__e" bind:input="__e" bind:__l="__l"></xt-verify-code></view>

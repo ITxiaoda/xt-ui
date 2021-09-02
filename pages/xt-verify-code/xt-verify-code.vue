@@ -1,5 +1,5 @@
 <template>
-	<view style="padding:10px"><xt-verify-code type="line" v-model="verifyCode" @confirm="confirm"></xt-verify-code></view>
+	<view style="padding:10px"><xt-verify-code type="middle" v-model="verifyCode" @confirm="confirm"></xt-verify-code></view>
 </template>
 
 <script>

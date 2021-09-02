@@ -17,7 +17,7 @@
 		<!-- 光标 -->
 		<view
 			id="xt__cursor"
-			v-if="cursorVisible"
+			v-if="cursorVisible && type !== 'middle'"
 			class="xt__cursor"
 			:style="{ left: codeCursorLeft[code.length] + 'px', height: cursorHeight + 'px', backgroundColor: cursorColor }"
 		></view>
@@ -28,8 +28,9 @@
 				<view
 					:key="index"
 					:style="{ borderColor: code.length === index && cursorVisible ? boxActiveColor : boxNormalColor }"
-					:class="['xt__box', `xt__box-${type === 'line' ? 'line' : 'box'}`]"
+					:class="['xt__box', `xt__box-${type + ''}`, `xt__box::after`]"
 				>
+					<view :style="{ borderColor: boxActiveColor }" class="xt__middle-line" v-if="type === 'middle' && !code[index]"></view>
 					<text class="xt__code-text">{{ code[index] | codeFormat(isPassword) }}</text>
 				</view>
 			</template>
@@ -39,8 +40,8 @@
 <script>
 /**
  * @description 输入验证码组件
- * @property {string} type = [line|box] - 显示类型 默认：box -eg:string
- * @property {string} inputType = [text|number] - 输入框类型 默认：number -eg:string
+ * @property {string} type = [box|middle|bottom] - 显示类型 默认：box -eg:bottom
+ * @property {string} inputType = [text|number] - 输入框类型 默认：number -eg:number
  * @property {number} size = [4|6] - 支持的验证码数量 默认：6 -eg:6
  * @property {boolean} isFocus - 是否立即聚焦 默认：true
  * @property {boolean} isPassword - 是否以密码形式显示 默认false -eg:false
@@ -230,14 +231,30 @@ export default {
 			display: inline-block;
 			width: 100rpx;
 			height: 140rpx;
-			&-line {
+			&-bottom {
 				border-bottom-width: 2px;
 				border-bottom-style: solid;
 			}
+
 			&-box {
 				border-width: 2px;
 				border-style: solid;
 			}
+
+			&-middle {
+				border: none;
+			}
+
+			.xt__middle-line {
+				position: absolute;
+				top: 50%;
+				left: 50%;
+				width: 50%;
+				transform: translate(-50%, -50%);
+				border-bottom-width: 2px;
+				border-bottom-style: solid;
+			}
+
 			.xt__code-text {
 				position: absolute;
 				top: 50%;
