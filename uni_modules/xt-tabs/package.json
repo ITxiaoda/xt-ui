@@ -7,7 +7,7 @@
 		"xt-tabs",
 		"标签页"
 	],
-	"repository": "",
+	"repository": "https://github.com/xiaodaweb/xt-ui/tree/main/uni_modules/xt-tabs",
 	"engines": {
 		"HBuilderX": "^3.1.0"
 	},
