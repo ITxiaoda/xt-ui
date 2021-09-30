@@ -1,7 +1,7 @@
 <template>
 	<view id="cus__tabs" class="xt__tabs">
 		<scroll-view scroll-x scroll-with-animation :scroll-left="scrollLeft" @scroll="onScroll">
-			<view :class="['tabs-List', list.length > 5 ? 'tabs-list-more' : 'tabs-list-normal']">
+			<view :class="['tabs-list', list.length > 5 ? 'tabs-list-more' : 'tabs-list-normal']">
 				<template v-for="(item, index) in list">
 					<view
 						id="tab__item"
@@ -156,8 +156,8 @@ export default {
 	}
 
 	.tabs-list {
-		height: 70px;
-		line-height: 70px;
+		height: 70rpx;
+		line-height: 70rpx;
 		scrollbar-width: 0;
 		white-space: nowrap;
 		box-sizing: border-box;
@@ -191,14 +191,14 @@ export default {
 			}
 
 			.item-text {
-				font-size: 28px;
+				font-size: 28rpx;
 				white-space: nowrap;
 			}
 		}
 	}
 
 	.underline {
-		height: 6px;
+		height: 6rpx;
 		transition: all 0.3s ease;
 	}
 }
