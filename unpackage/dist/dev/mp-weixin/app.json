@@ -1,5 +1,6 @@
 {
   "pages": [
+    "pages/xt-tabs/xt-tabs",
     "pages/xt-verify-code/xt-verify-code"
   ],
   "subPackages": [],
@@ -9,6 +10,5 @@
     "navigationBarBackgroundColor": "#F8F8F8",
     "backgroundColor": "#F8F8F8"
   },
-  "usingComponents": {},
-  "sitemapLocation": "sitemap.json"
+  "usingComponents": {}
 }

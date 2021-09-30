@@ -1,7 +1,0 @@
-{
-  "navigationBarTitleText": "验证码案例",
-  "enablePullDownRefresh": false,
-  "usingComponents": {
-    "xt-verify-code": "/uni_modules/xt-verify-code/components/xt-verify-code/xt-verify-code"
-  }
-}
