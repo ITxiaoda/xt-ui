@@ -11,7 +11,7 @@
 |value(v-model)	|string	|值(可双向绑定)																			|''			|
 |type						|string	|验证输入框类型可选值: box、middle、bottom					|box		|
 |inputType			|string	|输入类型 可选值：text、number											|number	|
-|size						|number	|验证码长度																					|6			|
+|size						|number	|验证码长度 可选值: 1、2、3、4、5、6								|6			|
 |isFocus				|boolean|是否一开始聚焦																			|true		|
 |isPassword			|boolean|是否使用密码方式显示																|false	|
 |cursorColor		|string	|光标颜色																						|#cccccc|

@@ -8,7 +8,7 @@
 			:focus="isFocus"
 			:password="isPassword"
 			:type="inputType"
-			:maxlength="size"
+			:maxlength="itemSize"
 			@input="input"
 			@focus="inputFocus"
 			@blur="inputBlur"
@@ -24,7 +24,7 @@
 
 		<!-- 输入框 - 组 -->
 		<view id="xt__input-ground" class="xt__input-ground">
-			<template v-for="(item, index) in size">
+			<template v-for="(item, index) in itemSize">
 				<view
 					:key="index"
 					:style="{ borderColor: code.length === index && cursorVisible ? boxActiveColor : boxNormalColor }"
@@ -42,7 +42,7 @@
  * @description 输入验证码组件
  * @property {string} type = [box|middle|bottom] - 显示类型 默认：box -eg:bottom
  * @property {string} inputType = [text|number] - 输入框类型 默认：number -eg:number
- * @property {number} size = [4|6] - 支持的验证码数量 默认：6 -eg:6
+ * @property {number} size = [1|2|3|4|5|6] - 支持的验证码数量 默认：6 -eg:6
  * @property {boolean} isFocus - 是否立即聚焦 默认：true
  * @property {boolean} isPassword - 是否以密码形式显示 默认false -eg:false
  * @property {string} cursorColor - 光标颜色 默认：#cccccc
@@ -99,16 +99,28 @@ export default {
 			cursorVisible: false,
 			cursorHeight: 35,
 			code: '', // 输入的验证码
-			codeCursorLeft: [] // 向左移动的距离数组
+			codeCursorLeft: [], // 向左移动的距离数组,
+			itemSize: 6
 		};
 	},
 	created() {
 		this.cursorVisible = this.isFocus;
+		this.validatorSize();
 	},
 	mounted() {
 		this.init();
 	},
 	methods: {
+		/**
+		 *
+		 */
+		validatorSize() {
+			if (this.size <= 6 && this.size > 0) {
+				this.itemSize = Math.floor(this.size);
+			} else {
+				this.itemSize = 6;
+			}
+		},
 		/**
 		 * @description 初始化
 		 */
@@ -160,20 +172,20 @@ export default {
 		// 输入框输入变化的回调
 		input(e) {
 			const value = e.detail.value;
-			this.cursorVisible = value.length !== this.size;
+			this.cursorVisible = value.length !== this.itemSize;
 			this.$emit('input', value);
 			this.inputSuccess(value);
 		},
 
 		// 输入完成回调
 		inputSuccess(value) {
-			if (value.length === this.size) {
+			if (value.length === this.itemSize) {
 				this.$emit('confirm', value);
 			}
 		},
 		// 输入聚焦
 		inputFocus() {
-			this.cursorVisible = this.code.length !== this.size;
+			this.cursorVisible = this.code.length !== this.itemSize;
 		},
 		// 输入失去焦点
 		inputBlur() {

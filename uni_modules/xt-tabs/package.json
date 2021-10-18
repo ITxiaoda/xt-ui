@@ -4,9 +4,9 @@
 	"version": "1.0.0",
 	"description": "xt-tabs",
 	"keywords": [
-		"xt-tabs",
-		"标签页"
-	],
+        "xt-tabs",
+        "标签页"
+    ],
 	"repository": "https://github.com/xiaodaweb/xt-ui/tree/main/uni_modules/xt-tabs",
 	"engines": {
 		"HBuilderX": "^3.1.0"
@@ -28,9 +28,9 @@
 			"qq": ""
 		},
 		"declaration": {
-			"ads": "",
-			"data": "",
-			"permissions": ""
+			"ads": "无",
+			"data": "无",
+			"permissions": "无"
 		},
 		"npmurl": ""
 	},
@@ -39,8 +39,8 @@
 		"encrypt": [],
 		"platforms": {
 			"cloud": {
-				"tcb": "n",
-				"aliyun": "n"
+				"tcb": "y",
+				"aliyun": "y"
 			},
 			"client": {
 				"Vue": {
