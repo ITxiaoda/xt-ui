@@ -1,7 +1,7 @@
 {
   "pages": [
-    "pages/xt-verify-code/xt-verify-code",
-    "pages/xt-tabs/xt-tabs"
+    "pages/xt-tabs/xt-tabs",
+    "pages/xt-verify-code/xt-verify-code"
   ],
   "subPackages": [],
   "window": {

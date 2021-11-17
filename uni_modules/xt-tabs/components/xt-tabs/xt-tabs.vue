@@ -8,7 +8,7 @@
 						:key="item.value"
 						:class="['tabs-item', list.length > 5 ? 'tabs-item-more' : 'tabs-item-normal']"
 						:style="{ color: tabsIndex === index ? activeColor : normalColor }"
-						@click="changeTabs(value || index)"
+						@click="changeTabs(index)"
 					>
 						<text class="item-text">{{ item.label }}</text>
 					</view>
@@ -48,7 +48,7 @@ export default {
 		},
 		value: {
 			type: Number,
-			default: 0
+			default: () => 0
 		}
 	},
 	data() {
@@ -139,6 +139,19 @@ export default {
 		},
 		onScroll(event) {
 			this.scrollLeftNum = event.detail.scrollLeft;
+		},
+		valueChange(val, old) {
+			console.log('val, old', val, old);
+			if (val !== old) {
+			}
+		}
+	},
+	watch: {
+		value: {
+			handler(val, old) {
+				console.log('val, old', val, old);
+				this.changeTabs(val);
+			}
 		}
 	}
 };
