@@ -46,6 +46,10 @@ export default {
 			type: String,
 			default: () => ''
 		},
+		lineWidth: {
+			type: Number,
+			default: () => 0.7
+		},
 		value: {
 			type: Number,
 			default: () => 0
