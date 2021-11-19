@@ -188,6 +188,7 @@ export default {
 			overflow: hidden;
 			text-overflow: ellipsis;
 			box-sizing: border-box;
+			vertical-align: middle;
 
 			&-normal {
 				flex: 1;
