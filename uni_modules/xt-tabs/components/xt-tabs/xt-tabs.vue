@@ -139,19 +139,14 @@ export default {
 		},
 		onScroll(event) {
 			this.scrollLeftNum = event.detail.scrollLeft;
-		},
-		valueChange(val, old) {
-			console.log('val, old', val, old);
-			if (val !== old) {
-			}
 		}
 	},
 	watch: {
 		value: {
 			handler(val, old) {
-				console.log('val, old', val, old);
 				this.changeTabs(val);
-			}
+			},
+			immediate: true
 		}
 	}
 };
