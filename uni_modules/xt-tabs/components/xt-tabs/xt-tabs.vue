@@ -70,6 +70,7 @@ export default {
 	},
 	mounted() {
 		this.init();
+		console.log("this.",this.$slots)
 	},
 	methods: {
 		init() {

@@ -1,28 +1,18 @@
 <template>
-	<view class="container">
-		<xt-tabs :list="list" :value="current" @change="tabChange"></xt-tabs>
-		<view class="swiper-content">
-			<swiper class="swiper" :current="current" @change="swiperChange">
-				<swiper-item>服务器1</swiper-item>
-				<swiper-item>服务器2</swiper-item>
-				<swiper-item>服务器3</swiper-item>
-				<swiper-item>服务器4</swiper-item>
-			</swiper>
-		</view>
-	</view>
+	<view class="container"><xt-tabs :list="list" :value="current" @change="tabChange"></xt-tabs></view>
 </template>
 
 <script>
 export default {
 	data() {
 		return {
-			list: [{ label: '服务器', value: '服务器1' }, { label: '服务器', value: '服务器2' }, { label: '服务器', value: '服务器3' }, { label: '服务器', value: '服务器4' }],
-			current: 0
+			list: [{ label: '第一页', slot: 'slot-1' }, { label: '第二页', slot: 'slot-2' }, { label: '第三页', slot: 'slot-3' }, { label: '第四页', slot: 'slot-4' }],
+			current: 1
 		};
 	},
 	methods: {
 		tabChange(index) {
-			this.current = index;
+			// this.current = index;
 			console.log('index', index);
 		},
 		swiperChange(e) {
@@ -35,18 +25,7 @@ export default {
 
 <style lang="scss">
 .container {
-	display: flex;
-	flex-direction: column;
-	justify-content: flex-start;
 	width: 100vw;
 	height: 100vh;
-}
-.swiper-content {
-	flex: 1;
-
-	.swiper {
-		width: 100%;
-		height: 100%;
-	}
 }
 </style>

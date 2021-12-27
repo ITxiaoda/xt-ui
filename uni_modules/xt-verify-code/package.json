@@ -1,8 +1,8 @@
 {
 	"id": "xt-verify-code",
 	"displayName": "xt-verify-code验证码输入",
-	"version": "1.0.3",
-	"description": "xt-verify-code验证码输入组件，提供box和line两种显示模式",
+	"version": "1.0.4",
+	"description": "xt-verify-code验证码输入组件，提供三种显示模式",
 	"keywords": [
         "xt-verify-code",
         "verify",
@@ -54,23 +54,23 @@
 				},
 				"H5-mobile": {
 					"Safari": "u",
-					"Android Browser": "u",
-					"微信浏览器(Android)": "u",
-					"QQ浏览器(Android)": "u"
+					"Android Browser": "y",
+					"微信浏览器(Android)": "y",
+					"QQ浏览器(Android)": "y"
 				},
 				"H5-pc": {
 					"Chrome": "y",
 					"IE": "u",
-					"Edge": "u",
-					"Firefox": "u",
-					"Safari": "u"
+					"Edge": "y",
+					"Firefox": "y",
+					"Safari": "y"
 				},
 				"小程序": {
 					"微信": "y",
-					"阿里": "u",
-					"百度": "u",
-					"字节跳动": "u",
-					"QQ": "u"
+					"阿里": "y",
+					"百度": "y",
+					"字节跳动": "y",
+					"QQ": "y"
 				},
 				"快应用": {
 					"华为": "u",
