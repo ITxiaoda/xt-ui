@@ -1,16 +1,15 @@
 {
-    "pages": [
-        "pages/demo/demo",
-        "pages/xt-tabs/xt-tabs",
-        "pages/xt-verify-code/xt-verify-code"
-    ],
-    "subPackages": [],
-    "window": {
-        "navigationBarTextStyle": "black",
-        "navigationBarTitleText": "uni-app",
-        "navigationBarBackgroundColor": "#F8F8F8",
-        "backgroundColor": "#F8F8F8"
-    },
-    "usingComponents": {},
-    "sitemapLocation": "sitemap.json"
+  "pages": [
+    "pages/xt-swiper-cell/xt-swiper-cell",
+    "pages/xt-tabs/xt-tabs",
+    "pages/xt-verify-code/xt-verify-code"
+  ],
+  "subPackages": [],
+  "window": {
+    "navigationBarTextStyle": "black",
+    "navigationBarTitleText": "uni-app",
+    "navigationBarBackgroundColor": "#F8F8F8",
+    "backgroundColor": "#F8F8F8"
+  },
+  "usingComponents": {}
 }

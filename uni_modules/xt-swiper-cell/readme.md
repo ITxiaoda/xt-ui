@@ -28,17 +28,17 @@ Vue.component('xt-swiper-cell', XtSwiperCell)
 |  参数		| 说明	|类型		|默认值	|
 |  ----		| ----	|----		|----	|
 | image	| 图片地址| String	| 自动生成一个图片|
-|  title| 标题		| String	|''
+| title | 标题		| String	|''
 | desc	| 描述		| String	|''
 
 ## left/right 按钮对象参数说明
 |  参数   | 说明  | 类型 | 默认值
 |  ----   | ----  | ---- | ---- 
-| text			| 文本				| String|
-| color			| 文本颜色			| String|
-|backgroundColor| 按钮背景颜色		| String|
-| style			| 自定义样式		| Object	|
-| callback		| 点击按钮的回调事件| (index:number) => void/Promise	|
+| text					| 文本							| String												|
+| color					| 文本颜色					| String												|
+|backgroundColor| 按钮背景颜色			| String												|
+| style					| 自定义样式				| Object												|
+| callback			| 点击按钮的回调事件| (index:number) => void/Promise|
 
 > callback 是Promise函数，根据 resolve(true), reject(false) 控制是否隐藏按钮 
 

@@ -1,6 +1,14 @@
 {
 	"pages": [ //pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
 		{
+			"path": "pages/xt-swiper-cell/xt-swiper-cell",
+			"style": {
+				"navigationBarTitleText": "左右滑动显示按钮",
+				"enablePullDownRefresh": false
+			}
+
+		},
+		{
 			"path": "pages/xt-tabs/xt-tabs",
 			"style": {
 				"navigationBarTitleText": "标签页",
