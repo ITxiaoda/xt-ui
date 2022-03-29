@@ -110,8 +110,8 @@ exports.main = async (event, context) => {
 |attachments|Array<Attachments>	|否																					|				|																																		|
 
 ## 方法
-|方法名				|类型							|说明												|
-|:--						|:--								|:--													|
-|sendTextMail	|(defaults)=> void|发送文本邮件								|
-|sendHtmlMail	|(defaults)=> void|发送html邮件								|
-|verify				|()=> boolean			|校验连接邮箱服务器是否成功	|
+|方法名				|类型													|说明																					|
+|:--					|:--													|:--																					|
+|sendTextMail	|(defaults)=> Promise<boolean>|发送文本邮件- 发送成功返回true, 失败返回false|
+|sendHtmlMail	|(defaults)=> Promise<boolean>|发送html邮件- 发送成功返回true, 失败返回false|
+|verify				|()=> Promise<boolean>				|校验连接邮箱服务器是否成功										|

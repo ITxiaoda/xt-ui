@@ -89,34 +89,40 @@ class XtEmail {
 	 * @property {string} subject - 标题 - 必传
 	 * @property {string} content - 邮件内容 - 必传
 	 */
-	sendTextMail(config = {}) {
-		if (!config.from && !this._defaults.from) {
-			console.error("from - 发送邮箱地址不能为空");
-			return;
+	async sendTextMail(config = {}) {
+		try {
+			if (!config.from && !this._defaults.from) {
+				console.error("from - 发送邮箱地址不能为空");
+				return;
+			}
+			if (!config.to && !this._defaults.to) {
+				console.error("to - 收件邮箱地址不能为空");
+				return;
+			}
+			if (!config.subject && !this._defaults.subject) {
+				console.error("subject - 邮箱标题不能为空");
+				return;
+			}
+			if (!config.text && !this._defaults.text) {
+				console.error("text - 邮件内容不能为空");
+				return;
+			}
+			const from = this._defaults.from;
+			if (config.name) {
+				// 发送人名称
+				from.name = config.name
+			}
+			this._transporter.sendMail({
+				...this._defaults,
+				...config,
+				from,
+				text: this._defaults.text || config.text
+			})
+			return true
+		} catch (e) {
+			//TODO handle the exception
+			return false
 		}
-		if (!config.to && !this._defaults.to) {
-			console.error("to - 收件邮箱地址不能为空");
-			return;
-		}
-		if (!config.subject && !this._defaults.subject) {
-			console.error("subject - 邮箱标题不能为空");
-			return;
-		}
-		if (!config.text && !this._defaults.text) {
-			console.error("text - 邮件内容不能为空");
-			return;
-		}
-		const from = this._defaults.from;
-		if (config.name) {
-			// 发送人名称
-			from.name = config.name
-		}
-		this._transporter.sendMail({
-			...this._defaults,
-			...config,
-			from,
-			text: this._defaults.text || config.text
-		})
 	}
 
 	/**
@@ -126,33 +132,39 @@ class XtEmail {
 	 * @property {string} subject - 标题 - 必传
 	 * @property {string} content - 邮件内容 - 必传
 	 */
-	sendHtmlMail(config = {}) {
-		if (!config.from && !this._defaults.from) {
-			console.error("from - 发送邮箱地址不能为空");
-			return;
+	async sendHtmlMail(config = {}) {
+		try {
+			if (!config.from && !this._defaults.from) {
+				console.error("from - 发送邮箱地址不能为空");
+				return;
+			}
+			if (!config.to && !this._defaults.to) {
+				console.error("to - 收件邮箱地址不能为空");
+				return;
+			}
+			if (!config.subject && !this._defaults.subject) {
+				console.error("subject - 邮箱标题不能为空");
+				return;
+			}
+			if (!config.html && !this._defaults.html) {
+				console.error("html - 邮件内容不能为空");
+				return;
+			}
+			const from = this._defaults.from;
+			if (config.name) {
+				// 发送人名称
+				from.name = config.name
+			}
+			await this._transporter.sendMail({
+				...this._defaults,
+				...config,
+				html: this._defaults.html || config.html
+			})
+			return true;
+		} catch (e) {
+			//TODO handle the exception
+			return false;
 		}
-		if (!config.to && !this._defaults.to) {
-			console.error("to - 收件邮箱地址不能为空");
-			return;
-		}
-		if (!config.subject && !this._defaults.subject) {
-			console.error("subject - 邮箱标题不能为空");
-			return;
-		}
-		if (!config.html && !this._defaults.html) {
-			console.error("html - 邮件内容不能为空");
-			return;
-		}
-		const from = this._defaults.from;
-		if (config.name) {
-			// 发送人名称
-			from.name = config.name
-		}
-		this._transporter.sendMail({
-			...this._defaults,
-			...config,
-			html: this._defaults.html || config.html
-		})
 	}
 
 	/**
