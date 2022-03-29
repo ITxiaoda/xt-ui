@@ -79,15 +79,15 @@ exports.main = async (event, context) => {
 	//返回数据给客户端
 	return event
 };
-
 ```
+
 ## 属性
 
 ### `XtCloudEmail(config[, defaults])`
 
 #### `config` 基本的属性 完整属性参考[nodemailer](https://nodemailer.com/smtp/)
 |属性		|类型				|是否必传	|默认值	|说明																																				|
-|--			|--					|--				|--			|--																																					|
+|:--			|:--					|:--				|:--			|:--																																					|
 |host		|string			|		是			|				|邮箱服务器地址																															|
 |port		|number			|		否			|465		|端口，secure 为false时，该属性必传。																				|
 |secure	|boolean		|		否			|true		| 为true，连接到服务器时将使用TLS, 端口为: 465, 使用其他端口需要设置为false	|
@@ -95,13 +95,13 @@ exports.main = async (event, context) => {
 
 #### `AuthConfig` 基本的属性
 |属性	|类型		|是否必传	|默认值	|说明			|
-|--		|--			|--				|--			|--				|
+|:--		|:--			|:--				|:--			|:--				|
 |user	|string	|是				|				|邮件账号	|
 |pass	|string	|是				|				|授权码		|
 
 #### `defaults` 基本的属性 完整属性参考[nodemailer](https://nodemailer.com/message/)
 |属性				|类型								|是否必传																		|默认值	|说明																																|
-|--					|--									|--																					|--			|--																																	|
+|:--					|:--									|:--																					|:--			|:--																																	|
 |name				|string							|否																					|				|不传，默认使用发送者的邮箱																					|
 |to					|string/Array				|否/使用sendTextMail或sendHtmlMail方法时必传|				|收件人的邮箱地址，多个邮箱地址需要用逗号(`,`)隔开, 或者传入一个数组|
 |subject		|strig							|否/使用sendTextMail或sendHtmlMail方法时必传|				|邮件主题																														|
@@ -111,7 +111,7 @@ exports.main = async (event, context) => {
 
 ## 方法
 |方法名				|类型							|说明												|
-|--						|--								|--													|
+|:--						|:--								|:--													|
 |sendTextMail	|(defaults)=> void|发送文本邮件								|
 |sendHtmlMail	|(defaults)=> void|发送html邮件								|
 |verify				|()=> boolean			|校验连接邮箱服务器是否成功	|

@@ -1,14 +1,14 @@
 {
   "id": "xt-cloud-email",
   "displayName": "xt-cloud-email",
-  "version": "1.0.0",
-  "description": "xt-cloud-email",
+  "version": "1.0.2",
+  "description": "xt-cloud-email 发送邮件，支持 qq、163邮箱或者是有smtp服务的邮箱",
   "keywords": [
     "xt-cloud-email"
 ],
-  "repository": "",
+  "repository": "https://github.com/xiaodaweb/xt-ui/tree/main/uni_modules/xt-cloud-email",
   "engines": {
-    "HBuilderX": "^3.1.0"
+    "HBuilderX": "^3.1.7"
   },
   "dcloudext": {
     "category": [
@@ -24,12 +24,12 @@
       }
     },
     "contact": {
-      "qq": ""
+      "qq": "1010161292"
     },
     "declaration": {
-      "ads": "",
-      "data": "",
-      "permissions": ""
+      "ads": "无",
+      "data": "无",
+      "permissions": "无"
     },
     "npmurl": ""
   },
