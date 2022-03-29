@@ -9,11 +9,11 @@
 ## 使用方法
 ### 获取授权码
 - qq邮箱
-![](readme_files/2.jpg)
-![](readme_files/3.jpg)
+![image.png](readme_files/2.jpg)
+![image.png](readme_files/3.jpg)
 开启其中一个 smtp 服务，获取授权码
 - 163邮箱
-![](readme_files/1.jpg)
+![image.png](readme_files/1.jpg)
 开启其中一个 smtp 服务，获取授权码
 ### 使用
 - 基本使用
