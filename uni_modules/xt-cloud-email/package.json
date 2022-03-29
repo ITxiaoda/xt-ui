@@ -1,10 +1,10 @@
 {
-  "id": "xt-email",
-  "displayName": "xt-email",
+  "id": "xt-cloud-email",
+  "displayName": "xt-cloud-email",
   "version": "1.0.0",
-  "description": "xt-email",
+  "description": "xt-cloud-email",
   "keywords": [
-    "xt-email"
+    "xt-cloud-email"
 ],
   "repository": "",
   "engines": {
@@ -38,8 +38,8 @@
     "encrypt": [],
     "platforms": {
       "cloud": {
-        "tcb": "u",
-        "aliyun": "u"
+        "tcb": "y",
+        "aliyun": "y"
       },
       "client": {
         "Vue": {

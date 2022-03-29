@@ -1,18 +1,3 @@
-const nodemailer = require("nodemailer");
-
-module.exports = function(config, defaults) {
-
-	return new XtEmail(config, defaults)
-}
-
-// 默认配置
-const initConfig = {
-	secure: true,
-	logger: true, // 在控制台打印报错
-	pool: true, // 使用连接池连接
-}
-
-
 /**
  * @typeref XtConfig
  * @property {string} mailType = ['qq'|'163']  - 防止以后要去做邮箱兼容
@@ -26,7 +11,7 @@ const initConfig = {
 
 /**
  * @typeref XtDefaults
- * @property {string} from - 发送人邮箱地址 default: config.auth.user
+ * @property {string} name - 自定义发送人名称 
  * @property {string|Array<string>} to - 收件人邮箱地址，需要发送多个邮箱，传入字符串时需要用逗号`,`在邮箱之间隔开，也可以传入一个字符串数组。
  * @property {string} subject - 主题
  * @property {string} text - 文本内容
@@ -35,6 +20,14 @@ const initConfig = {
  * 				@param {string} filename - 附件名称
  * 				@param {string} path - 附件地址 - 网络地址
  */
+const nodemailer = require("nodemailer");
+const {
+	initConfig
+} = require("./index.js")
+const ruleFun = require("../utils/rules.js")
+const {
+	initRuleConfig
+} = require("./rules.js")
 
 class XtEmail {
 	// 配置项
@@ -50,24 +43,19 @@ class XtEmail {
 	 */
 	constructor(config,
 		defaults = {}) {
-		if (!config.host) {
-			throw "host 发送邮箱服务器地址不能为空";
-			return;
-		}
-		if (!config.auth) {
-			throw "auth 发送账号信息不能为空";
+		if (!ruleFun(initRuleConfig, config)) {
 			return;
 		}
 		if (!config.auth.user) {
-			throw "auth.user 发送邮箱账号不能为空";
+			console.error("auth.user 发送邮箱账号不能为空")
 			return;
 		}
 		if (!config.auth.pass) {
-			throw "auth.pass 发送邮箱账号密码或授权码不能为空";
+			console.error("auth.pass 发送邮箱账号密码或授权码不能为空")
 			return;
 		}
 		if (config.secure === false && !config.port) {
-			throw "secure 不存在或者为false 时, port 属性必填"
+			console.error("secure 为false 时, port 属性必填")
 			return;
 		}
 		this._init(config, defaults)
@@ -85,7 +73,10 @@ class XtEmail {
 			...config
 		};
 		this._defaults = {
-			from: this.config.auth.user, //	发送人
+			from: {
+				name: defaults.name || this.config.auth.user,
+				address: this.config.auth.user
+			}, //	发送人
 			...defaults
 		}
 		this._transporter = nodemailer.createTransport(this.config, this._defaults);
@@ -100,25 +91,31 @@ class XtEmail {
 	 */
 	sendTextMail(config = {}) {
 		if (!config.from && !this._defaults.from) {
-			throw "from - 发送邮箱地址不能为空";
+			console.error("from - 发送邮箱地址不能为空");
 			return;
 		}
 		if (!config.to && !this._defaults.to) {
-			throw "to - 收件邮箱地址不能为空";
+			console.error("to - 收件邮箱地址不能为空");
 			return;
 		}
 		if (!config.subject && !this._defaults.subject) {
-			throw "subject - 邮箱标题不能为空";
+			console.error("subject - 邮箱标题不能为空");
 			return;
 		}
-		if (!config.content && !this._defaults.text) {
-			throw "content - 邮件内容不能为空";
+		if (!config.text && !this._defaults.text) {
+			console.error("text - 邮件内容不能为空");
 			return;
+		}
+		const from = this._defaults.from;
+		if (config.name) {
+			// 发送人名称
+			from.name = config.name
 		}
 		this._transporter.sendMail({
 			...this._defaults,
 			...config,
-			text: this._defaults.text || config.content
+			from,
+			text: this._defaults.text || config.text
 		})
 	}
 
@@ -131,25 +128,30 @@ class XtEmail {
 	 */
 	sendHtmlMail(config = {}) {
 		if (!config.from && !this._defaults.from) {
-			throw "from - 发送邮箱地址不能为空";
+			console.error("from - 发送邮箱地址不能为空");
 			return;
 		}
 		if (!config.to && !this._defaults.to) {
-			throw "to - 收件邮箱地址不能为空";
+			console.error("to - 收件邮箱地址不能为空");
 			return;
 		}
 		if (!config.subject && !this._defaults.subject) {
-			throw "subject - 邮箱标题不能为空";
+			console.error("subject - 邮箱标题不能为空");
 			return;
 		}
-		if (!config.content && !this._defaults.html) {
-			throw "content - 邮件内容不能为空";
+		if (!config.html && !this._defaults.html) {
+			console.error("html - 邮件内容不能为空");
 			return;
+		}
+		const from = this._defaults.from;
+		if (config.name) {
+			// 发送人名称
+			from.name = config.name
 		}
 		this._transporter.sendMail({
 			...this._defaults,
 			...config,
-			html: this._defaults.html || config.content
+			html: this._defaults.html || config.html
 		})
 	}
 
@@ -171,3 +173,6 @@ class XtEmail {
 		})
 	}
 }
+
+
+module.exports = XtEmail;

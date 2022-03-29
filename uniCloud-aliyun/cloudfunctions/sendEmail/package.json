@@ -9,6 +9,6 @@
 	"author": "",
 	"license": "ISC",
 	"dependencies": {
-		"xt-email": "file:../../../uni_modules/xt-email/uniCloud/cloudfunctions/common/xt-email"
+		"xt-cloud-email": "file:../../../uni_modules/xt-cloud-email/uniCloud/cloudfunctions/common/xt-cloud-email"
 	}
 }
