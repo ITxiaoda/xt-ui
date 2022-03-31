@@ -31,10 +31,10 @@ const {
 
 class XtEmail {
 	// 配置项
-	_config = null;
-	_defaults = null;
-	// 邮箱manager
-	_transporter = null;
+	// _config = null;
+	// _defaults = null;
+	// // 邮箱manager
+	// _transporter = null;
 
 	/**
 	 * @param {XtConfig} config
@@ -68,18 +68,18 @@ class XtEmail {
 	 */
 	_init(config,
 		defaults = {}) {
-		this.config = {
+		this._config = {
 			...initConfig,
 			...config
 		};
 		this._defaults = {
 			from: {
-				name: defaults.name || this.config.auth.user,
-				address: this.config.auth.user
+				name: defaults.name || this._config.auth.user,
+				address: this._config.auth.user
 			}, //	发送人
 			...defaults
 		}
-		this._transporter = nodemailer.createTransport(this.config, this._defaults);
+		this._transporter = nodemailer.createTransport(this._config, this._defaults);
 	}
 
 	/**
@@ -90,7 +90,7 @@ class XtEmail {
 	 * @property {string} content - 邮件内容 - 必传
 	 */
 	async sendTextMail(config = {}) {
-		try {
+		return new Promise((resolve, reject) => {
 			if (!config.from && !this._defaults.from) {
 				console.error("from - 发送邮箱地址不能为空");
 				return;
@@ -117,12 +117,14 @@ class XtEmail {
 				...config,
 				from,
 				text: this._defaults.text || config.text
+			}).then((res) => {
+				resolve(true)
+			}).catch(err => {
+				console.error("sendHtmlMail", err)
+				reject(false)
 			})
-			return true
-		} catch (e) {
-			//TODO handle the exception
-			return false
-		}
+		})
+
 	}
 
 	/**
@@ -130,10 +132,10 @@ class XtEmail {
 	 * @property {string} from - 发送邮箱地址 - 不填则使用auth.user  
 	 * @property {string} to - 收件邮箱地址 - 必传
 	 * @property {string} subject - 标题 - 必传
-	 * @property {string} content - 邮件内容 - 必传
+	 * @property {string} html - 邮件内容 - 必传
 	 */
-	async sendHtmlMail(config = {}) {
-		try {
+	sendHtmlMail(config = {}) {
+		return new Promise((resolve, reject) => {
 			if (!config.from && !this._defaults.from) {
 				console.error("from - 发送邮箱地址不能为空");
 				return;
@@ -155,16 +157,18 @@ class XtEmail {
 				// 发送人名称
 				from.name = config.name
 			}
-			await this._transporter.sendMail({
+
+			this._transporter.sendMail({
 				...this._defaults,
 				...config,
 				html: this._defaults.html || config.html
+			}).then((res) => {
+				resolve(true)
+			}).catch(err => {
+				console.error("sendHtmlMail", err)
+				reject(false)
 			})
-			return true;
-		} catch (e) {
-			//TODO handle the exception
-			return false;
-		}
+		})
 	}
 
 	/**
