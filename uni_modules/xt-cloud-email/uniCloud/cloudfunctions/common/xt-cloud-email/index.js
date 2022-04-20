@@ -1,8 +1,8 @@
-const XtEmail = require("./config/XtEmail.js")
+const Mailer = require("./config/Mailer.js")
 module.exports = function(config, defaults) {
 	try {
-		return new XtEmail(config, defaults)
+		return new Mailer(config, defaults)
 	} catch (err) {
-		console.error("new XtEmail error: ", err)
+		console.error("new Mailer error: ", err)
 	}
 }
