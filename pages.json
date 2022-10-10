@@ -1,6 +1,13 @@
 {
 	"pages": [ //pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
 		{
+			"path": "pages/xt-verify-code/xt-verify-code",
+			"style": {
+				"navigationBarTitleText": "验证码案例",
+				"enablePullDownRefresh": false
+			}
+
+		}, {
 			"path": "pages/xt-swiper-cell/xt-swiper-cell",
 			"style": {
 				"navigationBarTitleText": "左右滑动显示按钮",
@@ -17,13 +24,6 @@
 
 		},
 		{
-			"path": "pages/xt-verify-code/xt-verify-code",
-			"style": {
-				"navigationBarTitleText": "验证码案例",
-				"enablePullDownRefresh": false
-			}
-
-		}, {
 			"path": "pages/testEmail/testEmail",
 			"style": {
 				"navigationBarTitleText": "",
