@@ -100,8 +100,7 @@ export default {
 			cursorHeight: 35,
 			code: '', // 输入的验证码
 			codeCursorLeft: [], // 向左移动的距离数组,
-			itemSize: 6,
-			setTimeoutId: null // 防抖
+			itemSize: 6
 		};
 	},
 	created() {
@@ -174,31 +173,19 @@ export default {
 		onInput(e) {
 			const { code } = this;
 			let { value, keyCode } = e.detail;
-			if (uni.getSystemInfoSync().osName === 'ios') {
-				clearTimeout(this.setTimeoutId);
-				this.setTimeoutId = setTimeout(() => {
-					if (keyCode === 8) {
-						// 删除键
-						value = code.slice(0, -1);
-					} else {
-						if (code.length >= this.itemSize) {
-							return;
-						} else {
-							value = code + value.charAt(value.length - 1);
-						}
-					}
-					this.cursorVisible = value.length < this.itemSize;
-					this.$emit('input', value);
-					this.inputSuccess(value);
-				}, 50);
+			if (keyCode === 8) {
+				// 删除键
+				value = code.slice(0, -1);
 			} else {
-				if (keyCode !== 8 && code.length >= this.itemSize) {
+				if (code.length >= this.itemSize) {
 					return;
+				} else {
+					value = code + value.charAt(value.length - 1);
 				}
-				this.cursorVisible = value.length < this.itemSize;
-				this.$emit('input', value);
-				this.inputSuccess(value);
 			}
+			this.cursorVisible = value.length < this.itemSize;
+			this.$emit('input', value);
+			this.inputSuccess(value);
 		},
 
 		// 输入完成回调
