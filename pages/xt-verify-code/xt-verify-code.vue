@@ -1,5 +1,5 @@
 <template>
-	<view style="padding:10px"><xt-verify-code type="bottom" isPassword v-model="verifyCode" size="5" @confirm="confirm"></xt-verify-code></view>
+	<view style="padding:10px"><xt-verify-code type="bottom" isPassword v-model="verifyCode" size="6" @confirm="confirm"></xt-verify-code></view>
 </template>
 
 <script>
@@ -12,6 +12,7 @@ export default {
 	methods: {
 		confirm(data) {
 			console.log('data', data);
+			console.log('verifyCode', this.verifyCode);
 		},
 		clear() {
 			this.verifyCode = '';

@@ -9,7 +9,7 @@
 			:password="isPassword"
 			:type="inputType"
 			:maxlength="itemSize"
-			@input="input"
+			@input="onInput"
 			@focus="inputFocus"
 			@blur="inputBlur"
 		/>
@@ -100,7 +100,8 @@ export default {
 			cursorHeight: 35,
 			code: '', // 输入的验证码
 			codeCursorLeft: [], // 向左移动的距离数组,
-			itemSize: 6
+			itemSize: 6,
+			setTimeoutId: null // 防抖
 		};
 	},
 	created() {
@@ -112,7 +113,7 @@ export default {
 	},
 	methods: {
 		/**
-		 *
+		 * 设置验证码框数量
 		 */
 		validatorSize() {
 			if (this.size <= 6 && this.size > 0) {
@@ -170,11 +171,34 @@ export default {
 		},
 
 		// 输入框输入变化的回调
-		input(e) {
-			const value = e.detail.value;
-			this.cursorVisible = value.length !== this.itemSize;
-			this.$emit('input', value);
-			this.inputSuccess(value);
+		onInput(e) {
+			const { code } = this;
+			let { value, keyCode } = e.detail;
+			if (uni.getSystemInfoSync().osName === 'ios') {
+				clearTimeout(this.setTimeoutId);
+				this.setTimeoutId = setTimeout(() => {
+					if (keyCode === 8) {
+						// 删除键
+						value = code.slice(0, -1);
+					} else {
+						if (code.length >= this.itemSize) {
+							return;
+						} else {
+							value = code + value.charAt(value.length - 1);
+						}
+					}
+					this.cursorVisible = value.length < this.itemSize;
+					this.$emit('input', value);
+					this.inputSuccess(value);
+				}, 50);
+			} else {
+				if (keyCode !== 8 && code.length >= this.itemSize) {
+					return;
+				}
+				this.cursorVisible = value.length < this.itemSize;
+				this.$emit('input', value);
+				this.inputSuccess(value);
+			}
 		},
 
 		// 输入完成回调
@@ -185,11 +209,12 @@ export default {
 		},
 		// 输入聚焦
 		inputFocus() {
-			this.cursorVisible = this.code.length !== this.itemSize;
+			this.cursorVisible = this.code.length < this.itemSize;
 		},
 		// 输入失去焦点
 		inputBlur() {
 			this.cursorVisible = false;
+			this.isShowInputComp = false;
 		}
 	},
 	watch: {
