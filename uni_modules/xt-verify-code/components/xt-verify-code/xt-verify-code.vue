@@ -173,14 +173,16 @@ export default {
 		onInput(e) {
 			const { code } = this;
 			let { value, keyCode } = e.detail;
-			if (keyCode === 8) {
-				// 删除键
-				value = code.slice(0, -1);
-			} else {
-				if (code.length >= this.itemSize) {
-					return;
+			if (uni.getSystemInfoSync().platform == 'ios') {
+				if (keyCode === 8) {
+					// 删除键
+					value = code.slice(0, -1);
 				} else {
-					value = code + value.charAt(value.length - 1);
+					if (code.length >= this.itemSize) {
+						return;
+					} else {
+						value = code + value.charAt(value.length - 1);
+					}
 				}
 			}
 			this.cursorVisible = value.length < this.itemSize;
