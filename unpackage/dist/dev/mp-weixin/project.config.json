@@ -18,7 +18,7 @@
         }
     },
     "compileType": "miniprogram",
-    "libVersion": "2.27.2",
+    "libVersion": "",
     "appid": "wx6b3b8fd8d3f94266",
     "projectname": "xt-ui",
     "condition": {},

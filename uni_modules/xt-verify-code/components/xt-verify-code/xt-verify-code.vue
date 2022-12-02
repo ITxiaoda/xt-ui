@@ -6,7 +6,6 @@
 			:value="code"
 			class="xt__input"
 			:focus="isFocus"
-			:password="isPassword"
 			:type="inputType"
 			:maxlength="itemSize"
 			@input="onInput"
