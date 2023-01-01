@@ -1,17 +1,7 @@
 <template>
 	<view class="xt__verify-code">
 		<!-- 输入框 -->
-		<input
-			id="xt__input"
-			:value="code"
-			class="xt__input"
-			:focus="isFocus"
-			:type="inputType"
-			:maxlength="itemSize"
-			@input="onInput"
-			@focus="inputFocus"
-			@blur="inputBlur"
-		/>
+		<input id="xt__input" :value="code" class="xt__input" :focus="isFocus" :type="inputType" :maxlength="itemSize" @input="onInput" @focus="inputFocus" @blur="inputBlur" />
 
 		<!-- 光标 -->
 		<view
@@ -41,13 +31,13 @@
  * @description 输入验证码组件
  * @property {string} type = [box|middle|bottom] - 显示类型 默认：box -eg:bottom
  * @property {string} inputType = [text|number] - 输入框类型 默认：number -eg:number
- * @property {number} size = [1|2|3|4|5|6] - 支持的验证码数量 默认：6 -eg:6
+ * @property {number} size - 验证码输入框数量 默认：6 -eg:6
  * @property {boolean} isFocus - 是否立即聚焦 默认：true
- * @property {boolean} isPassword - 是否以密码形式显示 默认false -eg:false
+ * @property {boolean} isPassword - 是否以密码形式显示 默认false -eg: false
  * @property {string} cursorColor - 光标颜色 默认：#cccccc
  * @property {string} boxNormalColor - 光标未聚焦到的框的颜色 默认：#cccccc
  * @property {string} boxActiveColor - 光标聚焦到的框的颜色 默认：#000000
- * @event {Function(data)} confirm - 输入完成
+ * @event {Function(data)} confirm - 输入完成回调函数
  */
 export default {
 	name: 'xt-verify-code',
@@ -114,10 +104,10 @@ export default {
 		 * 设置验证码框数量
 		 */
 		validatorSize() {
-			if (this.size <= 6 && this.size > 0) {
+			if (this.size > 0) {
 				this.itemSize = Math.floor(this.size);
 			} else {
-				this.itemSize = 6;
+				throw "methods of 'size' is integer";
 			}
 		},
 		/**
@@ -209,78 +199,80 @@ export default {
 	}
 };
 </script>
-<style lang="scss" scoped>
+<style scoped>
 .xt__verify-code {
 	position: relative;
 	width: 100%;
 	box-sizing: border-box;
-
-	.xt__input {
-		height: 100%;
-		width: 200%;
-		position: absolute;
-		left: -100%;
-		z-index: 1;
-		background-color: rgba(0, 0, 0, 0);
-	}
-	.xt__cursor {
-		position: absolute;
-		top: 50%;
-		transform: translateY(-50%);
-		display: inline-block;
-		width: 2px;
-		animation-name: cursor;
-		animation-duration: 0.8s;
-		animation-iteration-count: infinite;
-	}
-
-	.xt__input-ground {
-		display: flex;
-		justify-content: space-between;
-		align-items: center;
-		width: 100%;
-		box-sizing: border-box;
-		.xt__box {
-			position: relative;
-			display: inline-block;
-			width: 100rpx;
-			height: 140rpx;
-			&-bottom {
-				border-bottom-width: 2px;
-				border-bottom-style: solid;
-			}
-
-			&-box {
-				border-width: 2px;
-				border-style: solid;
-			}
-
-			&-middle {
-				border: none;
-			}
-
-			.xt__middle-line {
-				position: absolute;
-				top: 50%;
-				left: 50%;
-				width: 50%;
-				transform: translate(-50%, -50%);
-				border-bottom-width: 2px;
-				border-bottom-style: solid;
-			}
-
-			.xt__code-text {
-				position: absolute;
-				top: 50%;
-				left: 50%;
-				font-size: 80rpx;
-				transform: translate(-50%, -50%);
-			}
-		}
-	}
 }
 
-@keyframes cursor {
+.xt__verify-code .xt__input {
+	height: 100%;
+	width: 200%;
+	position: absolute;
+	left: -100%;
+	z-index: 1;
+	background-color: rgba(0, 0, 0, 0);
+}
+.xt__verify-code .xt__cursor {
+	position: absolute;
+	top: 50%;
+	transform: translateY(-50%);
+	display: inline-block;
+	width: 2px;
+	animation-name: xt__cursor;
+	animation-duration: 0.8s;
+	animation-iteration-count: infinite;
+}
+
+.xt__verify-code .xt__input-ground {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	width: 100%;
+	box-sizing: border-box;
+}
+
+.xt__verify-code .xt__input-ground .xt__box {
+	position: relative;
+	display: inline-block;
+	width: 100rpx;
+	height: 140rpx;
+}
+
+.xt__verify-code .xt__input-ground .xt__box-bottom {
+	border-bottom-width: 2px;
+	border-bottom-style: solid;
+}
+
+.xt__verify-code .xt__input-ground .xt__box-box {
+	border-width: 2px;
+	border-style: solid;
+}
+
+.xt__verify-code .xt__input-ground .xt__box-middle {
+	border: none;
+}
+
+.xt__input-ground .xt__box .xt__middle-line {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	width: 50%;
+	transform: translate(-50%, -50%);
+	border-bottom-width: 2px;
+	border-bottom-style: solid;
+}
+
+.xt__input-ground .xt__box .xt__code-text {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	font-size: 80rpx;
+	transform: translate(-50%, -50%);
+}
+
+@keyframes xt__cursor {
 	0% {
 		opacity: 1;
 	}
