@@ -13,16 +13,15 @@
 
 		<!-- 输入框 - 组 -->
 		<view id="xt__input-ground" class="xt__input-ground">
-			<template v-for="(item, index) in itemSize">
-				<view
-					:key="index"
-					:style="{ borderColor: code.length === index && cursorVisible ? boxActiveColor : boxNormalColor }"
-					:class="['xt__box', `xt__box-${type + ''}`, `xt__box::after`]"
-				>
-					<view :style="{ borderColor: boxActiveColor }" class="xt__middle-line" v-if="type === 'middle' && !code[index]"></view>
-					<text class="xt__code-text">{{ code[index] | codeFormat(isPassword) }}</text>
-				</view>
-			</template>
+			<view
+				v-for="(item, index) in itemSize"
+				:key="index"
+				:style="{ borderColor: code.length === index && cursorVisible ? boxActiveColor : boxNormalColor }"
+				:class="['xt__box', `xt__box-${type + ''}`, `xt__box::after`]"
+			>
+				<view :style="{ borderColor: boxActiveColor }" class="xt__middle-line" v-if="type === 'middle' && !code[index]"></view>
+				<text class="xt__code-text">{{ code[index] | codeFormat(isPassword) }}</text>
+			</view>
 		</view>
 	</view>
 </template>
