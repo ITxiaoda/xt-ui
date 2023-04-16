@@ -318,6 +318,8 @@ export default {
 	position: absolute;
 	left: -100%;
 	z-index: 1;
+	color: transparent;
+	caret-color: transparent;
 	background-color: rgba(0, 0, 0, 0);
 }
 .xt__verify-code .xt__cursor {

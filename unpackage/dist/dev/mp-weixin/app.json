@@ -4,7 +4,8 @@
     "pages/xt-swiper-cell/xt-swiper-cell",
     "pages/xt-tabs/xt-tabs",
     "pages/testEmail/testEmail",
-    "pages/xt-hover-btn/xt-hover-btn"
+    "pages/xt-hover-btn/xt-hover-btn",
+    "pages/xt-player/xt-player"
   ],
   "subPackages": [],
   "window": {
