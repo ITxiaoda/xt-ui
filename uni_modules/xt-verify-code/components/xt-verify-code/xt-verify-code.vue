@@ -1,5 +1,5 @@
 <template>
-	<!-- #ifndef VUE3 -->
+	<!-- #ifdef VUE2 -->
 	<view class="xt__verify-code">
 		<!-- 输入框 -->
 		<input id="xt__input" :value="code" class="xt__input" :focus="isFocus" :type="inputType" :maxlength="itemSize" @input="onInput" @focus="inputFocus" @blur="inputBlur" />
@@ -86,7 +86,7 @@ import { propsMap } from './config.js';
 import { getElementRect } from './util.js';
 
 const props = defineProps(propsMap);
-const emits = defineEmits(['update:value', 'confirm']);
+const emits = defineEmits(['update:modelValue', 'confirm']);
 
 // 获取当前组件的实例
 const currentInstance = getCurrentInstance();
@@ -146,7 +146,7 @@ function getCodeCursorLeft() {
 function onInput(e) {
 	let { value, keyCode } = e.detail;
 	cursorVisible.value = value.length < itemSize.value;
-	emits('update:value', value);
+	emits('update:modelValue', value);
 	inputSuccess(value);
 }
 
@@ -177,7 +177,7 @@ onMounted(() => {
 });
 
 watch(
-	() => props.value,
+	() => props.modelValue,
 	val => {
 		code.value = val;
 	}
@@ -185,7 +185,7 @@ watch(
 </script>
 <!-- #endif -->
 
-<!-- #ifndef VUE3 -->
+<!-- #ifdef VUE2 -->
 <script>
 /**
  * @description 输入验证码组件

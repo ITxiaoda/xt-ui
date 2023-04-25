@@ -1,8 +1,17 @@
 export const propsMap = {
+	// #ifdef VUE2
 	value: {
 		type: String,
 		default: () => ''
 	},
+	// #endif
+	
+	// #ifdef VUE3
+	modelValue: {
+		type: String,
+		default: () => ''
+	},
+	// #endif
 	type: {
 		type: String,
 		default: () => 'box'
