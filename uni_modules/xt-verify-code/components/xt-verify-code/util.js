@@ -6,6 +6,8 @@
  * @param {object} that - 上下文环境 vue2：this ,vue3: getCurrentInstance();
  */
 export const getElementRect = (that) => (elm, type = 'single', callback) => {
+
+	// #ifndef H5
 	uni
 		.createSelectorQuery()
 		.in(that)[type === 'array' ? 'selectAll' : 'select'](elm)
@@ -13,4 +15,21 @@ export const getElementRect = (that) => (elm, type = 'single', callback) => {
 		.exec(data => {
 			callback(data[0]);
 		});
+	// #endif
+
+	// #ifdef H5
+	let elmArr = [];
+	const result = [];
+	if (type === 'array') {
+		elmArr = document.querySelectorAll(elm);
+	} else {
+		elmArr.push(document.querySelector(elm));
+	}
+
+	for (let elm of elmArr) {
+		result.push(elm.getBoundingClientRect());
+	}
+	console.log('result', result)
+	callback(type === 'array' ? result : result[0]);
+	// #endif
 }
