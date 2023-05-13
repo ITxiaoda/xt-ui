@@ -98,6 +98,7 @@ const cursorHeight = ref(35);
 const code = ref(''); // 输入的验证码
 const codeCursorLeft = ref([]); // 向左移动的距离数组,
 const itemSize = ref(6);
+const isPatch = ref(false);
 
 /**
  * 设置验证码框数量
@@ -146,14 +147,18 @@ function getCodeCursorLeft() {
 function onInput(e) {
 	let { value, keyCode } = e.detail;
 	cursorVisible.value = value.length < itemSize.value;
+	code.value = value;
 	emits('update:modelValue', value);
 	inputSuccess(value);
 }
 
 // 输入完成回调
 function inputSuccess(value) {
-	if (value.length === itemSize.value) {
+	if (value.length === itemSize.value && !isPatch.value) {
+		isPatch.value = true;
 		emits('confirm', value);
+	} else {
+		isPatch.value = false;
 	}
 }
 // 输入聚焦
@@ -179,7 +184,9 @@ onMounted(() => {
 watch(
 	() => props.modelValue,
 	val => {
-		code.value = val;
+		if (val !== code.value) {
+			code.value = val;
+		}
 	}
 );
 </script>
@@ -215,7 +222,8 @@ export default {
 			code: '', // 输入的验证码
 			codeCursorLeft: [], // 向左移动的距离数组,
 			itemSize: 6,
-			getElement: getElementRect(this)
+			getElement: getElementRect(this),
+			isPatch: false
 		};
 	},
 	created() {
@@ -272,14 +280,17 @@ export default {
 		onInput(e) {
 			let { value, keyCode } = e.detail;
 			this.cursorVisible = value.length < this.itemSize;
+			this.code = value;
 			this.$emit('input', value);
 			this.inputSuccess(value);
 		},
 
 		// 输入完成回调
 		inputSuccess(value) {
-			if (value.length === this.itemSize) {
+			if (value.length === this.itemSize && !this.isPatch) {
 				this.$emit('confirm', value);
+			} else {
+				this.isPatch = false;
 			}
 		},
 		// 输入聚焦
@@ -293,7 +304,9 @@ export default {
 	},
 	watch: {
 		value(val) {
-			this.code = val;
+			if (val !== this.code) {
+				this.code = val;
+			}
 		}
 	},
 	filters: {
