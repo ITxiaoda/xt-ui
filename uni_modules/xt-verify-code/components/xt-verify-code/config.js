@@ -43,5 +43,9 @@ export const propsMap = {
 	boxActiveColor: {
 		type: String,
 		default: () => '#000000'
+	},
+	color: {
+		type: String,
+		default: () => '#333333'
 	}
 }

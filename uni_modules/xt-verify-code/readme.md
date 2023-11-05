@@ -16,4 +16,5 @@
 |cursorColor		|string	|光标颜色																						|#cccccc|
 |boxNormalColor	|string	|显示框未选中的颜色																	|#cccccc|
 |boxActiveColor	|string	|显示框选中的颜色如果type='middle' 则是线的默认样式	|#000000|
+|color					|string	|输入文字的颜色																			|#333333|
 |@confirm				|event	|输入完成的回调事件  {(code)=>{}}										|				|

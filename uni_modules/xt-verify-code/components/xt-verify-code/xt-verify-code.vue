@@ -22,7 +22,7 @@
 			>
 				<view :style="{ borderColor: boxActiveColor }" class="xt__middle-line" v-if="type === 'middle' && !code[index]"></view>
 
-				<text class="xt__code-text">{{ code[index] | codeFormat(isPassword) }}</text>
+				<text :style="{ color: color }" class="xt__code-text">{{ code[index] | codeFormat(isPassword) }}</text>
 			</view>
 		</view>
 	</view>
@@ -60,7 +60,7 @@
 				:class="['xt__box', `xt__box-${props.type + ''}`, `xt__box::after`]"
 			>
 				<view :style="{ borderColor: props.boxActiveColor }" class="xt__middle-line" v-if="props.type === 'middle' && !code[index]"></view>
-				<text class="xt__code-text">{{ codeFormat(code[index], props.isPassword) }}</text>
+				<text :style="{ color: props.color }" class="xt__code-text">{{ codeFormat(code[index], props.isPassword) }}</text>
 			</view>
 		</view>
 	</view>
@@ -79,6 +79,7 @@
  * @property {string} cursorColor - 光标颜色 默认：#cccccc
  * @property {string} boxNormalColor - 光标未聚焦到的框的颜色 默认：#cccccc
  * @property {string} boxActiveColor - 光标聚焦到的框的颜色 默认：#000000
+ * @property {string} color - 光标聚焦到的框的颜色 默认：#333333
  * @event {Function(data)} confirm - 输入完成回调函数
  */
 import { defineProps, onMounted, ref, getCurrentInstance, watch } from 'vue';
@@ -204,6 +205,7 @@ watch(
  * @property {string} cursorColor - 光标颜色 默认：#cccccc
  * @property {string} boxNormalColor - 光标未聚焦到的框的颜色 默认：#cccccc
  * @property {string} boxActiveColor - 光标聚焦到的框的颜色 默认：#000000
+ * @property {string} color - 光标聚焦到的框的颜色 默认：#333333
  * @event {Function(data)} confirm - 输入完成回调函数
  */
 import { propsMap } from './config.js';
@@ -327,9 +329,9 @@ export default {
 
 .xt__verify-code .xt__input {
 	height: 100%;
-	width: 200%;
+	width: 200vw;
 	position: absolute;
-	left: -100%;
+	left: -100vw;
 	z-index: 1;
 	color: transparent;
 	caret-color: transparent;
@@ -344,6 +346,7 @@ export default {
 	animation-name: xt__cursor;
 	animation-duration: 0.8s;
 	animation-iteration-count: infinite;
+	z-index: 1;
 }
 
 .xt__verify-code .xt__input-ground {
