@@ -1,17 +1,57 @@
 {
 	"pages": [ //pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
 		{
-			"path": "pages/index/index",
+			"path": "pages/xt-verify-code/xt-verify-code",
 			"style": {
-				"navigationBarTitleText": "uni-app x"
+				"navigationBarTitleText": "验证码案例",
+				"enablePullDownRefresh": false
 			}
+
+		}, {
+			"path": "pages/xt-swiper-cell/xt-swiper-cell",
+			"style": {
+				"navigationBarTitleText": "左右滑动显示按钮",
+				"enablePullDownRefresh": false
+			}
+
+		},
+		{
+			"path": "pages/xt-tabs/xt-tabs",
+			"style": {
+				"navigationBarTitleText": "标签页",
+				"enablePullDownRefresh": false
+			}
+
+		},
+		{
+			"path": "pages/testEmail/testEmail",
+			"style": {
+				"navigationBarTitleText": "",
+				"enablePullDownRefresh": false
+			}
+
+		}, {
+			"path": "pages/xt-hover-btn/xt-hover-btn",
+			"style": {
+				"navigationBarTitleText": "悬浮按钮",
+				"enablePullDownRefresh": false
+			}
+
 		}
-	],
+	    ,{
+            "path" : "pages/xt-player/xt-player",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "",
+                "enablePullDownRefresh": false
+            }
+            
+        }
+    ],
 	"globalStyle": {
 		"navigationBarTextStyle": "black",
-		"navigationBarTitleText": "uni-app x",
+		"navigationBarTitleText": "uni-app",
 		"navigationBarBackgroundColor": "#F8F8F8",
 		"backgroundColor": "#F8F8F8"
-	},
-	"uniIdRouter": {}
+	}
 }

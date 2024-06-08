@@ -1,20 +1,19 @@
 {
-  "id": "uni-config-center",
-  "displayName": "uni-config-center",
-  "version": "0.0.2",
-  "description": "uniCloud 配置中心",
+  "id": "xt-cloud-email",
+  "displayName": "xt-cloud-email",
+  "version": "1.0.14",
+  "description": "xt-cloud-email 发送邮件，支持 qq、163邮箱或者是有smtp服务的邮箱",
   "keywords": [
-    "配置",
-    "配置中心"
+    "xt-cloud-email"
 ],
-  "repository": "",
+  "repository": "https://github.com/xiaodaweb/xt-ui/tree/main/uni_modules/xt-cloud-email",
   "engines": {
-    "HBuilderX": "^3.1.0"
+    "HBuilderX": "^3.1.11"
   },
   "dcloudext": {
     "category": [
-      "uniCloud",
-      "云函数模板"
+        "uniCloud",
+        "云函数模板"
     ],
     "sale": {
       "regular": {
@@ -25,7 +24,7 @@
       }
     },
     "contact": {
-      "qq": ""
+      "qq": "1010161292"
     },
     "declaration": {
       "ads": "无",
@@ -33,9 +32,6 @@
       "permissions": "无"
     },
     "npmurl": ""
-  },
-  "directories": {
-    "example": "../../../scripts/dist"
   },
   "uni_modules": {
     "dependencies": [],
@@ -46,6 +42,10 @@
         "aliyun": "y"
       },
       "client": {
+        "Vue": {
+          "vue2": "u",
+          "vue3": "u"
+        },
         "App": {
           "app-vue": "u",
           "app-nvue": "u"
