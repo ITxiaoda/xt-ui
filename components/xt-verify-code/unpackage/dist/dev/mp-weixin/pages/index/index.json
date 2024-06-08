@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "uni-app",
+  "usingComponents": {
+    "xt-verify-code": "/uni_modules/xt-verify-code/components/xt-verify-code/xt-verify-code"
+  }
+}
